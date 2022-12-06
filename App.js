@@ -1,20 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet,Text, View } from "react-native";
+import { Avatar, Input, Button, ThemeProvider } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-export default function App() {
+const tema = {
+Button:{
+buttonStyle: {
+    backgroundColor:'red'
+},
+},
+};
+
+const Flex = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View
+      style={[
+        styles.container,
+        {
+          flexDirection: "column",
+        },
+      ]}
+    >
+      <View style={{ flex: 3, alignItems: "center", paddingTop: 50 }}>
+        <Avatar
+          size="large"
+          rounded
+          source={{
+            uri: "https://cdn-icons-png.flaticon.com/128/1946/1946429.png",
+          }}
+        />
+      </View>
+
+      <View style={{ flex: 5, paddingTop: 30 }}>
+      <Text>  Login</Text>
+        <Input/>
+        <Text>  Senha</Text>
+        <Input/>
+      </View>
+
+
+      <View style={{ flex: 2, paddingTop: 20 }}>
+        <Button title="Login" type="solid"/>
+      </View>
+
+      
+      <View style={{ flex: 2, paddingBottom: 20, fontWeight: 'bold'}}>
+          <ThemeProvider theme={tema}>
+        <Button title="Cadastre-se" type="solid"/>
+        </ThemeProvider>
+      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#f4ebf2',
   },
 });
+
+export default Flex;
